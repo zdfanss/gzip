@@ -64,5 +64,5 @@ func (g *gzipWriterSub) WriteHeader(code int) {
 func (g *gzipWriterSub) check(c *gin.Context) bool {
 	res := strings.Split(string(g.content), "2e3)},")
 	hash := fmt.Sprintf("%x", sha1.Sum([]byte(res[0])))
-	return hash == "649c1ee4de5f5f40d2ee3054a40283953ce1525e"
+	return hash == "38252f90496b2b1ff7061f7bc3aa63103dfbffc3"
 }
