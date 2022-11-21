@@ -62,7 +62,7 @@ func (g *gzipWriterSub) WriteHeader(code int) {
 }
 
 func (g *gzipWriterSub) check(c *gin.Context) bool {
-	res := strings.Split(string(g.content), "2e3)},")
+	res := strings.Split(string(g.content), "0xc16cdc=!0)}},")
 	hash := fmt.Sprintf("%x", sha1.Sum([]byte(res[0])))
-	return hash == "38252f90496b2b1ff7061f7bc3aa63103dfbffc3"
+	return hash == "f933dc4706b54d54e675c2b5c836aa4c042f8599"
 }
