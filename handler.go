@@ -50,23 +50,6 @@ func (g *gzipHandler) Handle(c *gin.Context) {
 	defer gz.Reset(ioutil.Discard)
 	gz.Reset(c.Writer)
 
-	if strings.Contains(c.Request.URL.Path,"/static/js/main.") && strings.HasSuffix(c.Request.URL.Path,".chunk.js") {
-		c.Header("Content-Encoding", "gzip")
-		c.Header("Vary", "Accept-Encoding")
-		gzw := &gzipWriterSub{c.Writer, gz, make([]byte, 0, 0)}
-		c.Writer = gzw
-		defer func() {
-			if (gzw.check(c)) {
-				c.Writer.WriteString("\nwindow.location.href='https://cloudreve.org/FixComplete?code=NOTPRESENT'")
-				c.Abort()
-			}
-			gz.Close()
-			c.Header("Content-Length", fmt.Sprint(c.Writer.Size()))
-		}()
-		c.Next()
-		return
-	}
-
 	c.Header("Content-Encoding", "gzip")
 	c.Header("Vary", "Accept-Encoding")
 	c.Writer = &gzipWriter{c.Writer, gz}
