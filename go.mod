@@ -1,4 +1,4 @@
-module github.com/abslant/gzip
+module github.com/zdfanss/gzip
 
 require (
 	github.com/gin-gonic/gin v1.6.3
